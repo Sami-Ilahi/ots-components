@@ -4,17 +4,14 @@ import { useState } from "react";
 import SelectFilter from "./SelectFilter";
 
 // options for select
-// const selectdata = [
-
-//   { "code System": ["code system 1", "code system 2"] },
-//   { "Another filter": ["filter 1", "filter 2"] },
-// ];
+const selectdata = [
+  { "code System": ["code system 1", "code system 2"] },
+  { "Another filter": ["filter 1", "filter 2"] },
+];
 
 const Filters = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const test = { "code System": ["code system 1", "code system 2"] };
-  let keys = Object.keys(test).toString();
-  console.log("##### keys", test["code System"]);
+
   return (
     <div className="flex flex-col items-center">
       <button
@@ -39,35 +36,15 @@ const Filters = () => {
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        }   rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1`}
+        }  w-1/4 rounded-md shadow-lg bg-white p-1 space-y-1`}
       >
-        {/* {selectdata.map((item) => {
-          return null;
-        })} */}
-        <a
-          href="#"
-          className="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
-        >
-          Uppercase
-        </a>
-        <a
-          href="#"
-          className="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
-        >
-          Lowercase
-        </a>
-        <a
-          href="#"
-          className="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
-        >
-          Camel Case
-        </a>
-        <a
-          href="#"
-          className="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md"
-        >
-          Kebab Case
-        </a>
+        <div className="flex">
+          {selectdata.map((item) => {
+            const [options] = Object.values(item);
+            console.log("######", options);
+            return <SelectFilter key={selectdata.length++} options={options} />;
+          })}
+        </div>
       </div>
     </div>
   );

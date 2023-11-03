@@ -4,7 +4,6 @@ interface HeadPropos {
 }
 
 const TableHead = ({ tableHeadData, display }: HeadPropos) => {
-  console.log("from tableHead", tableHeadData);
   return (
     <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
       <tr>
